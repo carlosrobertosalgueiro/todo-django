@@ -1,2 +1,9 @@
-<!-template que recebe uma variavel->
-<h1>seu nome é: {{name}} </h1>
+{% extends 'base.html' %}
+
+{% block title %}Qual é seu nome{% endblock  %}
+
+{% block content %}
+    <h1>seu nome é: {{name}} </h1>
+{% endblock  %}
+
+
