@@ -1,12 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <title>{% block title %}{% endblock %} </title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   </head>
   <body>
     <p> barrra de navegação</p>
     {%block content %} {% endblock %}
     <p> rodapé </p>
+
+    <script src={% static 'js/scripts.js' %} > </script>
   </body>
 </html>
