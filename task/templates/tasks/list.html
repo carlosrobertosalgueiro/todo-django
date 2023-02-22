@@ -5,5 +5,33 @@
 {% endblock %}
 
 {% block content %}
-    <h1>lista de tarefas </h1>
+    <div class="offset-1 col-10 list-div">
+        <h1>lista de tarefas </h1>
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"> </i> Adicionar tarefas
+        </div>
+        <div class="col-9 search-div">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa" >
+            <i class="fas fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <ul class="task-list">
+            <li class="task-item"> 
+                <span> Titulo da tarefa</i> </span>
+                <span> <i class="fas fa-solid fa-trash"></i> </span>
+                <span> <i class="fas fa-solid fa-edit"></i> </span>
+            </li>
+            <li class="task-item"> 
+                <span> Titulo da tarefa</i> </span>
+                <span> <i class="fas fa-solid fa-trash"></i> </span>
+                <span> <i class="fas fa-solid fa-edit"></i> </span>
+            </li>
+            <li class="task-item"> 
+                <span> Titulo da tarefa</i> </span>
+                <span> <i class="fas fa-solid fa-trash"></i> </span>
+                <span> <i class="fas fa-solid fa-edit"></i> </span>
+            </li>
+        </ul>
+    </div>
+
 {% endblock  %}
