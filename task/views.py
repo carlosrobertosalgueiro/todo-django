@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Task
 
 # Create your views here.
 def helloword(request):
@@ -7,8 +8,8 @@ def helloword(request):
     return HttpResponse("hello word")
 
 def tasklist(request):
-    #renderiza um template estático
-    return render(request,'tasks/list.html')
+    tasks = Task.objects.all()
+    return render(request,'tasks/list.html', {'tasks': tasks})
 
 def yourname(request, name):
     #renderiza um template com um variavel
