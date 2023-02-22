@@ -16,21 +16,13 @@
         </div>
 
         <ul class="task-list">
+            {% for task in tasks %}
             <li class="task-item"> 
-                <span> Titulo da tarefa</i> </span>
+                <span> <a href="/task/{{task.id}}">{{task.title}}</a></span>
                 <span> <i class="fas fa-solid fa-trash"></i> </span>
                 <span> <i class="fas fa-solid fa-edit"></i> </span>
             </li>
-            <li class="task-item"> 
-                <span> Titulo da tarefa</i> </span>
-                <span> <i class="fas fa-solid fa-trash"></i> </span>
-                <span> <i class="fas fa-solid fa-edit"></i> </span>
-            </li>
-            <li class="task-item"> 
-                <span> Titulo da tarefa</i> </span>
-                <span> <i class="fas fa-solid fa-trash"></i> </span>
-                <span> <i class="fas fa-solid fa-edit"></i> </span>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 
