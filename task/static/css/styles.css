@@ -50,6 +50,10 @@
     padding: 0;
 }
 
+#add-link {
+    text-decoration: none;
+}
+
 .task-list {
     padding-left: 0;
 }
