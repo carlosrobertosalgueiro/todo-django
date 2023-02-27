@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render,redirect
 from django.http import HttpResponse
 from .models import Task
 from .forms import TaskForm
+from django.contrib import messages
 
 # Create your views here.
 def helloword(request):
@@ -47,4 +48,11 @@ def editTask(request, id):
             return render(request, 'tasks/edittask.html', {'form': form, 'task': task})
     else:
       return render(request, 'tasks/edittask.html', {'form': form, 'task': task})
+
+def deleteTAsk(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.delete()
     
+    messages.info(request, 'Tarefa deletada com sucesso')
+    
+    return redirect('/')       
