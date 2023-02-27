@@ -54,6 +54,8 @@
     text-decoration: none;
 }
 
+/* Lista de tarefas */
+
 .task-list {
     padding-left: 0;
 }
@@ -91,6 +93,7 @@
     float: right;
 }
 
+/* Rodape */
 
 footer {
     background-color: #333;
@@ -104,4 +107,14 @@ footer p {
     text-align:center;
     top:50%;
     position: relative;
+}
+
+/* Mensagens */
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
 }
