@@ -12,14 +12,21 @@ def helloword(request):
     return HttpResponse("hello word")
 
 def tasklist(request):
-    #chamado todos os intems do db e ordena
-    tasks_list = Task.objects.all().order_by('-created_at')
     
-    #paginação
+    search = request.GET.get('search')
     
-    paginator = Paginator(tasks_list, 4)
-    page = request.GET.get('page')
-    tasks = paginator.get_page(page)
+    if search:
+        tasks = Task.objects.filter(title__icontains=search)
+    else:   
+        
+        #chamado todos os intems do db e ordena
+        tasks_list = Task.objects.all().order_by('-created_at')
+        
+        #paginação
+        
+        paginator = Paginator(tasks_list, 4)
+        page = request.GET.get('page')
+        tasks = paginator.get_page(page)
     
     #renderização
     return render(request,'tasks/list.html', {'tasks': tasks})
