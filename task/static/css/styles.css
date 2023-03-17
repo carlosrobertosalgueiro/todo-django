@@ -45,6 +45,9 @@
     display: inline-block;
 }
 
+#search-btn {
+    cursor: pointer;
+}
 
 .list-div {
     padding: 0;
