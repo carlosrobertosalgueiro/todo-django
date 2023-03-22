@@ -19,5 +19,6 @@ from task.urls import urlpatterns as helloword
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(helloword))
+    path('', include(helloword)),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
