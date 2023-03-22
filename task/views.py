@@ -4,13 +4,10 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
-def helloword(request):
-    #imprime um Http resposta sem template
-    return HttpResponse("hello word")
-
+@login_required
 def tasklist(request):
     
     search = request.GET.get('search')
@@ -23,7 +20,6 @@ def tasklist(request):
         tasks_list = Task.objects.all().order_by('-created_at')
         
         #paginação
-        
         paginator = Paginator(tasks_list, 4)
         page = request.GET.get('page')
         tasks = paginator.get_page(page)
@@ -31,14 +27,13 @@ def tasklist(request):
     #renderização
     return render(request,'tasks/list.html', {'tasks': tasks})
 
-def yourname(request, name):
-    #renderiza um template com um variavel
-    return render(request, 'tasks/yourname.html',{'name': name})
 
+@login_required
 def taskView(request, id):
     task = get_object_or_404(Task, pk=id)
     return render(request, 'tasks/task.html', {'task':task})
 
+@login_required
 def newTask(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -52,6 +47,7 @@ def newTask(request):
         form = TaskForm()
         return render(request, 'tasks/addtask.html', {'form': form})
     
+@login_required   
 def editTask(request, id):
     task = get_object_or_404(Task, pk=id)
     form = TaskForm(instance=task)    
@@ -66,7 +62,8 @@ def editTask(request, id):
             return render(request, 'tasks/edittask.html', {'form': form, 'task': task})
     else:
       return render(request, 'tasks/edittask.html', {'form': form, 'task': task})
-
+  
+@login_required
 def deleteTAsk(request, id):
     task = get_object_or_404(Task, pk=id)
     task.delete()
@@ -74,3 +71,12 @@ def deleteTAsk(request, id):
     messages.info(request, 'Tarefa deletada com sucesso')
     
     return redirect('/')       
+
+def yourname(request, name):
+    #renderiza um template com um variavel
+    return render(request, 'tasks/yourname.html',{'name': name})
+
+# Create your views here.
+def helloword(request):
+    #imprime um Http resposta sem template
+    return HttpResponse("hello word")
