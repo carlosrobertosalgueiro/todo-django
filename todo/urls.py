@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from task.urls import urlpatterns as helloword
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(helloword)),
+    path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
