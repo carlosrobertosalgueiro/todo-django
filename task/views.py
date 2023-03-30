@@ -13,11 +13,11 @@ def tasklist(request):
     search = request.GET.get('search')
     
     if search:
-        tasks = Task.objects.filter(title__icontains=search)
+        tasks = Task.objects.filter(title__icontains=search, user=request.user)
     else:   
         
         #chamado todos os intems do db e ordena
-        tasks_list = Task.objects.all().order_by('-created_at')
+        tasks_list = Task.objects.all().order_by('-created_at').filter(user=request.user)
         
         #paginação
         paginator = Paginator(tasks_list, 4)
@@ -41,6 +41,7 @@ def newTask(request):
         if form.is_valid():
             task = form.save(commit=False)
             task.done = 'doing'
+            task.user = request.user
             task.save()
             return redirect('/')
     else:
@@ -49,7 +50,7 @@ def newTask(request):
     
 @login_required   
 def editTask(request, id):
-    task = get_object_or_404(Task, pk=id)
+    task = get_object_or_404(Task, pk=id, user=request.user)
     form = TaskForm(instance=task)    
     
     if(request.method == 'POST'):
