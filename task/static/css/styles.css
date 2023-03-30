@@ -3,7 +3,7 @@
 }
 
 
-.navbar  {
+.navbar {
     border-bottom: 1px solid #333;
     margin-bottom: 20px;
 }
@@ -67,18 +67,15 @@
     list-style: none;
     font-size: 20px;
     height: 50px;
-    padding: 0 15px;
-    padding-top: 10px;
+    padding: 10px;
+    margin-top: 10px;
     border-bottom: 1px dashed #CCC;
 }
 
-
-.fas.fa-trash .fas.fa-trash{
-    cursor: pointer;
-    margin: 5px;
-    font-size: 20px;
-    float: right;
-}
+.task-item.done {
+    background-color: #69ef4b;
+    
+}  
 
 .fas.fa-trash {
     color: #db1e47;
@@ -96,19 +93,31 @@
     float: right;
 }
 
+.fa-check {
+    color: #CCC;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.done .fa-check {
+    color: #1966e2;
+}
+
 /* Rodape */
 
 footer {
     background-color: #333;
-    height:300px;
+    height: 300px;
     border-top: 2 px solid #202020;
 
 }
 
 footer p {
     color: #f5f5f5;
-    text-align:center;
-    top:50%;
+    text-align: center;
+    top: 50%;
     position: relative;
 }
 
@@ -139,7 +148,7 @@ ul.messages li {
     margin-right: 5px;
 }
 
-    /* login */
+/* login */
 
 .auth-card {
     margin-bottom: 30px;
